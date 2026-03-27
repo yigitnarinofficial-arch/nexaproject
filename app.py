@@ -531,7 +531,7 @@ footer { position:relative; z-index:1; border-top:1px solid var(--border); paddi
 """
 
 def _html_foot(now):
-    return f"""
+    return """
 <div class="ambient-orb orb1"></div>
 <div class="ambient-orb orb2"></div>
 <div class="ambient-orb orb3"></div>
@@ -575,8 +575,8 @@ def _html_foot(now):
 </div>
 
 <footer>
-  <span class="footer-logo">◈ {html.escape(PROJE_ADI)}</span>
-  <span class="footer-meta">app.py · {now}</span>
+  <span class="footer-logo">◈ {0}</span>
+  <span class="footer-meta">app.py · {1}</span>
 </footer>
 
 <script>
@@ -618,7 +618,7 @@ document.addEventListener('keydown',function(e){{var lb=document.getElementById(
 </script>
 </body>
 </html>
-"""
+""".format(html.escape(PROJE_ADI), now)
 
 
 # ════════════════════════════════════════════════════════════
@@ -992,7 +992,7 @@ if not Path(OUTPUT_FILE).exists():
     log.info("📂 sunum.html bulunamadı, arka planda üretiliyor…")
     threading.Thread(target=lambda: run_build(force=True), daemon=True).start()
 else:
-    log.info(f"📄 {OUTPUT_FILE} mevcut, sunucu hazır.")
+    log.info(f"📄 {OUTPUT_FILE} mevcut, sunucu hazır.") 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
